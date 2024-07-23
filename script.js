@@ -9,11 +9,10 @@ function contar(){
 
     result.innerHTML = 'Contando: <br />'
 
-    if(init == '' || end == ''){
+    
+    if(init == '' || end == '' || step == '' || step <= 0 || init == end){
         result.innerHTML = 'Impossível contar!'
-    }
-    else if (step == '' || step <= 0){
-        result.innerHTML = 'Quantidade de passos inváida. Por favor, digite um número válido.'
+        return;
     }
     else if(init < end){
         for (var i = init; i < end; i += step){
@@ -22,17 +21,13 @@ function contar(){
             `
         }
         result.innerHTML += '🏁'
-    }
-    else if(init > end){
-        for (var i = init; i > end; i -= step){
-            result.innerHTML += `
-            ${i} 👉
-            `
-        }
-        result.innerHTML += '🏁'
-    }
-    else {
-        result.innerHTML = 'Impossível contar!'
+        return;
     }
     
+    for (var i = init; i > end; i -= step){
+        result.innerHTML += `
+         ${i} 👉
+         `
+        }
+        result.innerHTML += '🏁'
 }
